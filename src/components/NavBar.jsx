@@ -28,8 +28,6 @@ function NavBar({
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    var but = document.getElementById("SIGNIN");
-
     fetch("http://localhost:3001/categories/")
       .then((r) => r.json())
       .then((recurso) => {
@@ -40,28 +38,21 @@ function NavBar({
     if (typeof onlineUser === "object") {
       getAllCart(onlineUser.id);
       getSumaryCart(onlineUser.id);
-      if (onlineUser.type == 1) {
+      if (onlineUser.type === 1) {
         setAdmin(true);
       }
     }
     if (typeof onlineUser !== "object") loginUserCookie();
     console.log(onlineUser);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onlineUser]);
 
   useEffect(() => {
     if (typeof onlineUser == "object") {
       getAllCart(onlineUser.id);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
-
-  function alertt() {
-    Swal.fire({
-      icon: "error",
-      title: "Hello! To add to cart, log into your account",
-    });
-  }
-  /* var cantproductos = [...getcart,ls.get('idProducts')];
-console.log(cantproductos); */
 
   function salirr() {
     Swal.fire({
@@ -83,7 +74,7 @@ console.log(cantproductos); */
             >
               <div class="logo pull-left animate__animated animate__bounceInLeft animate__delay-2s">
                 <NavLink to="/">
-                  <a href="">
+                  <a href="/#">
                     <img src="logo.png" alt="" />
                   </a>
                 </NavLink>
@@ -129,7 +120,7 @@ console.log(cantproductos); */
                   <li>
                     {typeof onlineUser !== "object" && (
                       <NavLink to="/signup">
-                        <a href="">
+                        <a href="/#">
                           <i class="fa fa-user"></i> Create Account
                         </a>
                       </NavLink>
@@ -138,21 +129,13 @@ console.log(cantproductos); */
                   <li>
                     {typeof onlineUser !== "object" && (
                       <NavLink to="/signin">
-                        <a href="">
+                        <a href="/#">
                           <i class="fa fa-lock"></i> Login
                         </a>
                       </NavLink>
                     )}
                   </li>
                   {onlineUser.firstname && (
-                    /*    <li class="dropdown">
-                                            <a href="" onClick={() => salirr()}><i class="fa fa-lock"></i>WELCOME {onlineUser.firstname.toUpperCase()} {onlineUser.surname.toUpperCase()} Logout</a>
-                                            <ul role="menu" class="sub-menu">
-                                            <li>LOGOUT</li>
-                                            </ul>
-                                            <a href="/me" id="profile"><i className="fa fa-user" aria-hidden="true"></i>Profile</a>
-                                            </li> */
-
                     <li class="dropdown">
                       <a>
                         WELCOME{" "}
@@ -164,7 +147,7 @@ console.log(cantproductos); */
                       <ul role="menu" class="sub-menu">
                         <li>
                           <NavLink className="dropdown-item" to={`/me`}>
-                            <a href="">
+                            <a href="/#">
                               <i
                                 className="fa fa-user"
                                 aria-hidden="true"
@@ -179,7 +162,7 @@ console.log(cantproductos); */
                         </li>
                         <li>
                           <NavLink className="dropdown-item" to={`/`}>
-                            <a href="" onClick={() => salirr()}>
+                            <a href="/#" onClick={() => salirr()}>
                               <i
                                 class="fa fa-sign-out"
                                 aria-hidden="true"
@@ -274,7 +257,7 @@ console.log(cantproductos); */
                             className="dropdown-item"
                             to={`/formProduct`}
                           >
-                            <a href="">Form Product</a>
+                            <a href="/#">Form Product</a>
                           </NavLink>
                         </li>
                         <li>
@@ -282,7 +265,7 @@ console.log(cantproductos); */
                             className="dropdown-item"
                             to={`/formAddProduct`}
                           >
-                            <a href="">Add Product</a>
+                            <a href="/#">Add Product</a>
                           </NavLink>
                         </li>
                         <li>
@@ -290,7 +273,7 @@ console.log(cantproductos); */
                         </li>
                         <li>
                           <NavLink className="dropdown-item" to={`/admin`}>
-                            <a href="">Admin</a>
+                            <a href="/#">Admin</a>
                           </NavLink>
                         </li>
                       </ul>

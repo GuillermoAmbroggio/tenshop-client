@@ -89,7 +89,7 @@ const SignIn = ({
     console.log(input);
     loginUser(input);
   };
-  if (onlineUser == 2) {
+  if (onlineUser === 2) {
     onlineUserError();
     Swal.fire({
       icon: "error",

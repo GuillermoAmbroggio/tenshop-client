@@ -28,7 +28,7 @@ function NavBar({
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3001/categories/")
+    fetch("http://localhost:8000/categories/")
       .then((r) => r.json())
       .then((recurso) => {
         if (recurso) {

@@ -359,13 +359,13 @@ function reducerAddUser(data) {
     var password = data[2];
     if (data[1].googleId) {
       axios.post(
-        "http://localhost:3001/loginGoogle",
+        "http://localhost:8000/loginGoogle",
         { username, password },
         { withCredentials: true }
       );
     } else {
       axios.post(
-        "http://localhost:3001/login",
+        "http://localhost:8000/login",
         { username, password },
         { withCredentials: true }
       );
@@ -376,13 +376,13 @@ function reducerAddUser(data) {
     var password = data[2];
     if (data[1][0].googleId) {
       axios.post(
-        "http://localhost:3001/loginGoogle",
+        "http://localhost:8000/loginGoogle",
         { username, password },
         { withCredentials: true }
       );
     } else {
       axios.post(
-        "http://localhost:3001/login",
+        "http://localhost:8000/login",
         { username, password },
         { withCredentials: true }
       );

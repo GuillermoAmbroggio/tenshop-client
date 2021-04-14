@@ -1,5 +1,5 @@
-function template (username,firstname,surname){
-	return (`
+function template(username, firstname, surname) {
+  return `
 
 	<!DOCTYPE html>
 <html>
@@ -124,7 +124,13 @@ function template (username,firstname,surname){
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Welcome ${ firstname.charAt(0).toUpperCase()+firstname.slice(1) + " " + surname.charAt(0).toUpperCase()+surname.slice(1)} ! </h1> 
+                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Welcome ${
+                              firstname.charAt(0).toUpperCase() +
+                              firstname.slice(1) +
+                              " " +
+                              surname.charAt(0).toUpperCase() +
+                              surname.slice(1)
+                            } ! </h1> 
                         </td>
                     </tr>
                 </table>
@@ -145,7 +151,7 @@ function template (username,firstname,surname){
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#FFA73B"><a href="http://localhost:3000/activeaccount" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Confirm Account</a></td>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#FFA73B"><a href="http://tenshop.vercel.app/activeaccount" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Confirm Account</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -160,7 +166,7 @@ function template (username,firstname,surname){
                     </tr> <!-- COPY -->
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;"><a href="#" target="_blank" style="color: #FFA73B;">http://localhost:3000/activeaccount</a></p>
+                            <p style="margin: 0;"><a href="#" target="_blank" style="color: #FFA73B;">http://tenshop.vercel.app/activeaccount</a></p>
                         </td>
                     </tr>
                     <tr>
@@ -208,7 +214,7 @@ function template (username,firstname,surname){
 
 
 
-	`)
+	`;
 }
 
-module.exports = template
+module.exports = template;

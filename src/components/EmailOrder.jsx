@@ -1,5 +1,5 @@
-function template (first,last,total_price){
-	return (`
+function template(first, last, total_price) {
+  return `
 
 	<!DOCTYPE html>
 <html>
@@ -124,7 +124,14 @@ function template (first,last,total_price){
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Thanks ${ first.charAt(0).toUpperCase()+first.slice(1) + " " + last.charAt(0).toUpperCase()+last.slice(1)+' '}for your purchase!</h1> 
+                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Thanks ${
+                              first.charAt(0).toUpperCase() +
+                              first.slice(1) +
+                              " " +
+                              last.charAt(0).toUpperCase() +
+                              last.slice(1) +
+                              " "
+                            }for your purchase!</h1> 
                         </td>
                     </tr>
                 </table>
@@ -157,7 +164,7 @@ function template (first,last,total_price){
             <tr>
                 <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                     <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Need more help?</h2>
-                    <p style="margin: 0;"><a href="http://localhost:3000/contact" target="_blank" style="color: #FFA73B;">We&rsquo;re here to help you out</a></p>
+                    <p style="margin: 0;"><a href="http://tenshop.vercel.app/contact" target="_blank" style="color: #FFA73B;">We&rsquo;re here to help you out</a></p>
                 </td>
             </tr>
         </table>
@@ -183,8 +190,7 @@ function template (first,last,total_price){
 
 
 
-`)
+`;
 }
 
-
-module.exports = template
+module.exports = template;

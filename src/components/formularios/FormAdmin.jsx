@@ -22,7 +22,7 @@ function FormAdmin({ updateUser, users, onlineUser, getUsers, deleteUser }) {
   var elId = useRef(null);
   function update(id, users) {
     users.find((e) => {
-      if (e.id === id) {
+      if (e.id == id) {
         setInput(e);
         document.getElementById("username").value = e.username;
         document.getElementById("firstname").value = e.firstname;
@@ -69,7 +69,7 @@ function FormAdmin({ updateUser, users, onlineUser, getUsers, deleteUser }) {
     // alert('Delete success Category')
   }
 
-  if (onlineUser.type === 1) {
+  if (onlineUser.type === "1") {
     return (
       <div>
         <section id="cart_items">
@@ -113,8 +113,8 @@ function FormAdmin({ updateUser, users, onlineUser, getUsers, deleteUser }) {
                             </td>
                             <td class="cart_price">
                               <p>
-                                {(p.type === 1 && "ADMIN") ||
-                                  (p.type === 2 && "USER")}
+                                {(p.type === "1" && "ADMIN") ||
+                                  (p.type === "2" && "USER")}
                               </p>
                             </td>
                             <td class="cart_quantity">

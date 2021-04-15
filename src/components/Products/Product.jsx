@@ -84,7 +84,7 @@ function Product({
   }
   var todosLosProductos = products.concat(searchProducts);
   var resultado = todosLosProductos.find((el) => {
-    if (el.id === id) {
+    if (el.id == id) {
       return el;
     } else {
       return undefined;
@@ -128,7 +128,7 @@ function Product({
     setInputRating(rating);
   }
   var flag = false;
-  if (onlineUser === 0 || onlineUser === 1) {
+  if (onlineUser == "0" || onlineUser == "1") {
     flag = true;
   } else {
     flag = false;
@@ -136,13 +136,13 @@ function Product({
   var flagOrders = false;
   reviews &&
     reviews.map((p) => {
-      if (p.userId === onlineUser.id) flag = true;
+      if (p.userId == onlineUser.id) flag = true;
     });
   if (orders.length > 0) {
     orders.map((or) => {
-      if (or.userId === onlineUser.id) {
+      if (or.userId == onlineUser.id) {
         ordersxproduct.map((op) => {
-          if (op.order_id === or.id) {
+          if (op.order_id == or.id) {
             if (or.status === "complete") {
               flagOrders = true;
             }
@@ -158,7 +158,7 @@ function Product({
   //console.log("flag", flag)
   //
   function changeImage(image, idimg) {
-    if (idimg === 1) {
+    if (idimg == 1) {
       var element = document.getElementById("img1");
       element.style.opacity = " 0.3";
     } else if (document.getElementById("img1")) {
@@ -166,7 +166,7 @@ function Product({
       element.style.opacity = "";
     }
 
-    if (idimg === 2) {
+    if (idimg == 2) {
       var element = document.getElementById("img2");
       element.style.opacity = " 0.3";
     } else if (document.getElementById("img2")) {
@@ -174,7 +174,7 @@ function Product({
       element.style.opacity = "";
     }
 
-    if (idimg === 3) {
+    if (idimg == 3) {
       var element = document.getElementById("img3");
       element.style.opacity = " 0.3";
     } else if (document.getElementById("img3")) {
@@ -182,7 +182,7 @@ function Product({
       element.style.opacity = "";
     }
 
-    if (idimg === 4) {
+    if (idimg == 4) {
       var element = document.getElementById("img4");
       element.style.opacity = " 0.3";
     } else if (document.getElementById("img4")) {
@@ -410,7 +410,7 @@ function Product({
                       <a>
                         <i class="fa fa-user"></i>
                         {all_users.map((u) => {
-                          if (p.userId === u.id)
+                          if (p.userId == u.id)
                             return (
                               "  " +
                               u.firstname.charAt(0).toUpperCase() +

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { addUser, getUsers, addCartInvited } from "../actions";
-// import "./SignUp.css";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
@@ -95,9 +94,6 @@ function SignUp({
 
   function handleSubmit(e) {
     e.preventDefault();
-    //mailgun.messages().send(data, (error, body) => {
-    // console.log(body);
-    // });
 
     var keys = Object.keys(input);
     if (
@@ -143,17 +139,6 @@ function SignUp({
       });
       history.push("/");
     }
-
-    //console.log("ANTESS DE ENTRARRRRRR", setid)
-    /*           if(typeof onlineUser == "object"){
-              console.log("ENTROOOOOOO", setid)
-              let arr = [];
-              setid.forEach(function(ele){
-                  return arr.push(parseInt(ele))
-                });
-                addCartInvited(arr, onlineUser.id)
-              console.log("SIGN IN PROOOOOOO", arr, onlineUser,onlineUser.id) 
-            }  */
   }
   var flagName = useRef("true");
   var flagSurname = useRef("true");
@@ -161,17 +146,6 @@ function SignUp({
   var flagPass = useRef("true");
   var flagPass2 = useRef("true");
   var flagEmail = useRef("true");
-
-  //   var API_KEY = '42a6fff54d7abd9021a77f44e0d7eb51-7cd1ac2b-8b692ccc';
-  // var DOMAIN = 'sandbox233afed3745040c296739c02f2367640.mailgun.org';
-  // var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
-
-  // const data = {
-  //   from: 'tenshop@mailinator.com',
-  // 	to: 'faqqu.fu@gmail.com',
-  //   subject: 'faq',
-  //   text: 'Probandoooooss!'
-  // };
 
   function validate(input) {
     let errors = {};

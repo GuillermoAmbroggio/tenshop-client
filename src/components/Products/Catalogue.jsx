@@ -32,7 +32,7 @@ function Catalogue({
     var acum = 0;
     var cont = 0;
     allreviews.forEach((r) => {
-      if (r.productId === id) {
+      if (r.productId == id) {
         cont += 1;
         acum += r.rating;
       }

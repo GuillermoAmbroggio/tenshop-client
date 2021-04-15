@@ -60,7 +60,7 @@ function FormProduct({
 
   function terminarorden() {
     let usuario = orders.find((el) => {
-      if (el.userId === productsxorder.userId) {
+      if (el.userId == productsxorder.userId) {
         return el;
       } else {
         return undefined;
@@ -77,7 +77,7 @@ function FormProduct({
     });
   }
 
-  if (onlineUser.type === 1) {
+  if (onlineUser.type === "1") {
     return (
       <div className="container">
         {/* <!-- Modal 1 --> */}

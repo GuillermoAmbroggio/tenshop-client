@@ -38,7 +38,7 @@ function NavBar({
     if (typeof onlineUser === "object") {
       getAllCart(onlineUser.id);
       getSumaryCart(onlineUser.id);
-      if (onlineUser.type === 1) {
+      if (onlineUser.type === "1") {
         setAdmin(true);
       }
     }

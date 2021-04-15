@@ -113,7 +113,7 @@ const reducer = (state = initialState, action) => {
       let legacycatxprod = state.categores_x_products;
       legacycatxprod.forEach((el, i) => {
         if (
-          el.product_id === action.payload.id &&
+          el.product_id == action.payload.id &&
           el.category === action.payload.name
         ) {
           return legacycatxprod.splice(i, 1);

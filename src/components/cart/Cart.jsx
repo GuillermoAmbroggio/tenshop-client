@@ -37,7 +37,7 @@ function Cart({
   const history = useHistory();
 
   React.useEffect(() => {
-    if (typeof onlineUser === "object") {
+    if (typeof onlineUser == "object") {
       var idUser = onlineUser.id;
       getAllCart(idUser);
     }
@@ -136,7 +136,7 @@ function Cart({
     }).then((result) => {
       if (result.value) {
         if (result.isConfirmed) {
-          if (total.current === 0) {
+          if (total.current == 0) {
             priceOrder(onlineUser.id, calculaTotal());
             updateCart(onlineUser.id, productosConSubtotales.current);
             completeCart(onlineUser.id, result.value);
@@ -425,7 +425,7 @@ function Cart({
                   >
                     Cancel
                   </a>
-                  {typeof onlineUser === "object" ? (
+                  {typeof onlineUser == "object" ? (
                     <a
                       class="btn btn-default check_out"
                       href=""

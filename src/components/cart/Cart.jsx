@@ -37,23 +37,18 @@ function Cart({
   const history = useHistory();
 
   React.useEffect(() => {
-    if (typeof onlineUser == "object") {
+    if (typeof onlineUser === "object") {
       var idUser = onlineUser.id;
+      getAllProducts();
       getAllCart(idUser);
+      getSumaryCart(onlineUser.id);
     }
-    getAllProducts();
-  }, []);
-
-  React.useEffect(() => {
-    getSumaryCart(onlineUser.id);
-  }, [cart, getcart]);
-
+  }, [getcart.length]);
   var arr = [];
   if (ls.get("idProducts").length) {
     ls.get("idProducts").forEach(function (ele) {
       return arr.push(parseInt(ele));
     });
-    console.log("ARRINVITADO", arr, ls.get("idProducts"));
   }
 
   if (getcart.length) {

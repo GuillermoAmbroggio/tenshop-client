@@ -12,8 +12,6 @@ import {
 } from "../actions/index.js";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-
 var ls = require("local-storage");
 
 function NavBar({
@@ -30,17 +28,17 @@ function NavBar({
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    fetch("https://tenshop-api.herokuapp.com/categories/")
+    fetch(config.API_URL + "/categories/")
       .then((r) => r.json())
       .then((recurso) => {
         if (recurso) {
           setCategories(recurso);
         }
       });
-    if (typeof onlineUser === "object") {
+    if (typeof onlineUser == "object") {
       getAllCart(onlineUser.id);
       getSumaryCart(onlineUser.id);
-      if (onlineUser.type === "1") {
+      if (onlineUser.type == "1") {
         setAdmin(true);
       }
     }
@@ -66,6 +64,7 @@ function NavBar({
     setAdmin(false);
     history.push("/");
   }
+
   return (
     <header id="header">
       <div class="header-middle">
@@ -100,7 +99,6 @@ function NavBar({
                               backgroundColor: "orange",
                             }}
                           >
-                            {" "}
                             {ls.get("idProducts").length}
                           </span>
                         )}
@@ -112,7 +110,6 @@ function NavBar({
                               backgroundColor: "orange",
                             }}
                           >
-                            {" "}
                             {getcart.length !== 0 ? getcart.length : 0}
                           </span>
                         )}

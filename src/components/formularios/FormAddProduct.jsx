@@ -5,6 +5,7 @@ import { getAllProducts, getAllCategories } from "../../actions";
 import FileBase64 from "react-file-base64"; // npm install react-file-base64
 import Page404 from "../Page404";
 import Swal from "sweetalert2";
+import config from "../../config.js";
 
 function FormAddProduct({
   products,
@@ -97,10 +98,7 @@ function FormAddProduct({
       document.getElementById("contCat").innerHTML = "";
       e.preventDefault();
 
-      return axios.post(
-        "https://tenshop-api.herokuapp.com/products/add",
-        objetoo
-      );
+      return axios.post(`${config.API_URL}/products/add`, objetoo);
     }
   };
 

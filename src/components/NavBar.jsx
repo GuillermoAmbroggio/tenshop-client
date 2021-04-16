@@ -13,6 +13,7 @@ import {
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 var ls = require("local-storage");
+import config from "../config.js";
 
 function NavBar({
   onlineUser,

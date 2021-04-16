@@ -359,13 +359,13 @@ function reducerAddUser(data) {
     var password = data[2];
     if (data[1].googleId) {
       axios.post(
-        "http://localhost:8000/loginGoogle",
+        "https://tenshop-api.herokuapp.com/loginGoogle",
         { username, password },
         { withCredentials: true }
       );
     } else {
       axios.post(
-        "http://localhost:8000/login",
+        "https://tenshop-api.herokuapp.com/login",
         { username, password },
         { withCredentials: true }
       );
@@ -376,13 +376,13 @@ function reducerAddUser(data) {
     var password = data[2];
     if (data[1][0].googleId) {
       axios.post(
-        "http://localhost:8000/loginGoogle",
+        "https://tenshop-api.herokuapp.com/loginGoogle",
         { username, password },
         { withCredentials: true }
       );
     } else {
       axios.post(
-        "http://localhost:8000/login",
+        "https://tenshop-api.herokuapp.com/login",
         { username, password },
         { withCredentials: true }
       );

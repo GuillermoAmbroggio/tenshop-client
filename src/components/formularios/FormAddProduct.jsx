@@ -97,7 +97,10 @@ function FormAddProduct({
       document.getElementById("contCat").innerHTML = "";
       e.preventDefault();
 
-      return axios.post("http://localhost:8000/products/add", objetoo);
+      return axios.post(
+        "https://tenshop-api.herokuapp.com/products/add",
+        objetoo
+      );
     }
   };
 

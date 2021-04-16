@@ -131,7 +131,7 @@ const DatesMe = ({ user, loginUserCookie, updateOnlineUser, updateUser }) => {
 
     document.getElementById("password1").value = "";
     document.getElementById("password2").value = "";
-    axios.put("http://localhost:8000/users/aaa/updatePassword", {
+    axios.put("https://tenshop-api.herokuapp.com/users/aaa/updatePassword", {
       id: user.id,
       password: changePassword.password1,
     });

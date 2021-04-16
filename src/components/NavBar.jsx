@@ -12,6 +12,8 @@ import {
 } from "../actions/index.js";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+
 var ls = require("local-storage");
 
 function NavBar({
@@ -28,7 +30,7 @@ function NavBar({
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/categories/")
+    fetch("https://tenshop-api.herokuapp.com/categories/")
       .then((r) => r.json())
       .then((recurso) => {
         if (recurso) {
@@ -42,8 +44,9 @@ function NavBar({
         setAdmin(true);
       }
     }
-    if (typeof onlineUser !== "object") loginUserCookie();
-    console.log(onlineUser);
+    if (typeof onlineUser !== "object") {
+      loginUserCookie();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onlineUser]);
 

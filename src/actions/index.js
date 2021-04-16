@@ -47,7 +47,7 @@ export const SEND_EMAIL_VISITED = "SEND_EMAIL_VISITED";
 export function getSearchProducts(search) {
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/products/searches/" + search, {
+      .get("https://tenshop-api.herokuapp.com/products/searches/" + search, {
         withCredentials: true,
       })
       .then((result) => result.data)
@@ -63,7 +63,9 @@ export function getSearchProducts(search) {
 export function getAllProducts() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/products", { withCredentials: true })
+      .get("https://tenshop-api.herokuapp.com/products", {
+        withCredentials: true,
+      })
       .then((result) => result.data)
       .then((products) => {
         dispatch({
@@ -77,7 +79,7 @@ export function getAllProducts() {
 export function addCategory(category) {
   return function (dispatch) {
     return axios
-      .post("http://localhost:8000/categories/add/", category, {
+      .post("https://tenshop-api.herokuapp.com/categories/add/", category, {
         withCredentials: true,
       })
       .then((result) => {
@@ -92,9 +94,13 @@ export function addCategory(category) {
 export function modifyCategory(body, name) {
   return function (dispatch) {
     return axios
-      .put(`http://localhost:8000/categories/modify/${name}`, body, {
-        withCredentials: true,
-      })
+      .put(
+        `https://tenshop-api.herokuapp.com/categories/modify/${name}`,
+        body,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -108,7 +114,7 @@ export function modifyCategory(body, name) {
 export function deleteCategory(category) {
   return function (dispatch) {
     return axios
-      .delete(`http://localhost:8000/categories/${category}`)
+      .delete(`https://tenshop-api.herokuapp.com/categories/${category}`)
       .then(() => {
         dispatch({
           type: DELETE_CATEGORY,
@@ -121,7 +127,7 @@ export function deleteCategory(category) {
 export function updateProduct(body) {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/products/update/`, body)
+      .post(`https://tenshop-api.herokuapp.com/products/update/`, body)
       .then(() => {
         dispatch({
           type: UPDATE_PRODUCT,
@@ -133,19 +139,21 @@ export function updateProduct(body) {
 
 export function deleteProduct(id) {
   return function (dispatch) {
-    return axios.delete(`http://localhost:8000/products/${id}`).then(() => {
-      dispatch({
-        type: DELETE_PRODUCT,
-        payload: id,
+    return axios
+      .delete(`https://tenshop-api.herokuapp.com/products/${id}`)
+      .then(() => {
+        dispatch({
+          type: DELETE_PRODUCT,
+          payload: id,
+        });
       });
-    });
   };
 }
 
 export function deleteCatxProd(name, id) {
   return function (dispatch) {
     return axios
-      .delete(`http://localhost:8000/products/cxp/${id}/${name}`)
+      .delete(`https://tenshop-api.herokuapp.com/products/cxp/${id}/${name}`)
       .then(() => {
         dispatch({
           type: DELETECATXPROD,
@@ -158,7 +166,9 @@ export function deleteCatxProd(name, id) {
 export function getCategoriesxProducts() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/products/cxp", { withCredentials: true })
+      .get("https://tenshop-api.herokuapp.com/products/cxp", {
+        withCredentials: true,
+      })
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -172,7 +182,9 @@ export function getCategoriesxProducts() {
 export function getAllCategories() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/categories/", { withCredentials: true })
+      .get("https://tenshop-api.herokuapp.com/categories/", {
+        withCredentials: true,
+      })
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -185,7 +197,7 @@ export function getAllCategories() {
 
 export function getOneCategory(category) {
   return function (dispatch) {
-    return fetch("http://localhost:8000/categories/" + category)
+    return fetch("https://tenshop-api.herokuapp.com/categories/" + category)
       .then((response) => response.json())
       .then((json) => {
         dispatch({
@@ -198,7 +210,7 @@ export function getOneCategory(category) {
 export function addUser(body) {
   return function (dispatch) {
     return axios
-      .post("http://localhost:8000/users/adduser", body, {
+      .post("https://tenshop-api.herokuapp.com/users/adduser", body, {
         withCredentials: true,
       })
       .then((result) => result.data)
@@ -214,12 +226,14 @@ export function addUser(body) {
 export function deleteUser(id) {
   console.log("El IDDDD", id);
   return function (dispatch) {
-    return axios.delete(`http://localhost:8000/users/${id}`).then(() => {
-      dispatch({
-        type: DELETE_USER,
-        payload: id,
+    return axios
+      .delete(`https://tenshop-api.herokuapp.com/users/${id}`)
+      .then(() => {
+        dispatch({
+          type: DELETE_USER,
+          payload: id,
+        });
       });
-    });
   };
 }
 ///AGREGANDO PRODUCT AL CARRITO
@@ -229,7 +243,7 @@ export function addCart(idProduct, idUser) {
   };
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/cart/`, body, {
+      .post(`https://tenshop-api.herokuapp.com/users/${idUser}/cart/`, body, {
         withCredentials: true,
       })
       .then(() => {
@@ -246,9 +260,13 @@ export function addCartInvited(ids, idUser) {
   let body = ids;
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/invited/cart/`, body, {
-        withCredentials: true,
-      })
+      .post(
+        `https://tenshop-api.herokuapp.com/users/${idUser}/invited/cart/`,
+        body,
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
         dispatch({
           type: ADD_CART_INVITED,
@@ -261,7 +279,7 @@ export function addCartInvited(ids, idUser) {
 export function getAllCart(idUser) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:8000/users/${idUser}/cart/`, {
+      .get(`https://tenshop-api.herokuapp.com/users/${idUser}/cart/`, {
         withCredentials: true,
       })
       .then((result) => result.data)
@@ -276,7 +294,7 @@ export function getAllCart(idUser) {
 
 /*export function userLogout() {
   return function(dispatch) {
-    return axios.get('http://localhost:8000/logout', { withCredentials: true })
+    return axios.get('https://tenshop-api.herokuapp.com/logout', { withCredentials: true })
       .then(() => {
         return {
           type: USER_LOGOUT
@@ -294,7 +312,7 @@ export function onlineUserError() {
 export function getUsers() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/users", { withCredentials: true })
+      .get("https://tenshop-api.herokuapp.com/users", { withCredentials: true })
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -307,7 +325,7 @@ export function getUsers() {
 export function updateUser(id, body) {
   return function (dispatch) {
     return axios
-      .put(`http://localhost:8000/users/${id}`, body)
+      .put(`https://tenshop-api.herokuapp.com/users/${id}`, body)
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -321,7 +339,7 @@ export function updateUser(id, body) {
 export function updateCart(idUser, body) {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/c/cart`, body, {
+      .post(`https://tenshop-api.herokuapp.com/users/${idUser}/c/cart`, body, {
         withCredentials: true,
       })
       .then((result) => result.data)
@@ -343,7 +361,7 @@ export function priceOrder(idUser, total) {
   };
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/c/order`, body)
+      .post(`https://tenshop-api.herokuapp.com/users/${idUser}/c/order`, body)
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -361,9 +379,13 @@ export function completeCart(idUser, addres) {
   };
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/update/cart`, body, {
-        withCredentials: true,
-      })
+      .post(
+        `https://tenshop-api.herokuapp.com/users/${idUser}/update/cart`,
+        body,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -377,9 +399,12 @@ export function finishorder(idUser, idOrder) {
   console.log("Acionssssss", idUser, idOrder);
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/aceptar/${idOrder}`, {
-        withCredentials: true,
-      })
+      .post(
+        `https://tenshop-api.herokuapp.com/users/${idUser}/aceptar/${idOrder}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -395,9 +420,13 @@ export function cancellCart(idUser) {
   };
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/update/cart`, body, {
-        withCredentials: true,
-      })
+      .post(
+        `https://tenshop-api.herokuapp.com/users/${idUser}/update/cart`,
+        body,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -410,9 +439,12 @@ export function cancellCart(idUser) {
 export function celarordenPanel(idUser, idOrder) {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/${idUser}/canc/${idOrder}`, {
-        withCredentials: true,
-      })
+      .post(
+        `https://tenshop-api.herokuapp.com/users/${idUser}/canc/${idOrder}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -431,7 +463,7 @@ export function vaciarpanelorders() {
 export function getOrders(status) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:8000/orders/status/${status}`, {
+      .get(`https://tenshop-api.herokuapp.com/orders/status/${status}`, {
         withCredentials: true,
       })
       .then((result) => result.data)
@@ -447,7 +479,10 @@ export function getOrders(status) {
 export function addReview(aux, idProduct) {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/products/${idProduct}/review`, aux)
+      .post(
+        `https://tenshop-api.herokuapp.com/products/${idProduct}/review`,
+        aux
+      )
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -461,7 +496,9 @@ export function loginUser(body) {
   // console.log("QUE ENTRA AL BODY", body)
   return function (dispatch) {
     return axios
-      .post("http://localhost:8000/login", body, { withCredentials: true })
+      .post("https://tenshop-api.herokuapp.com/login", body, {
+        withCredentials: true,
+      })
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -472,16 +509,19 @@ export function loginUser(body) {
   };
 }
 export function userLogout() {
-  axios.get("http://localhost:8000/logout", { withCredentials: true });
+  axios.get("https://tenshop-api.herokuapp.com/logout", {
+    withCredentials: true,
+  });
   return {
     type: USER_LOGOUT,
   };
 }
 
 export function loginUserCookie() {
+  console.log("SE EJECUTA LOGINCOKIE LINE 482 ACTIONS");
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/login", { withCredentials: true })
+      .get("https://tenshop-api.herokuapp.com/login", { withCredentials: true })
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -494,7 +534,7 @@ export function loginUserCookie() {
 export function getReviews(id) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:8000/products/${id}/review`)
+      .get(`https://tenshop-api.herokuapp.com/products/${id}/review`)
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -508,7 +548,7 @@ export function getReviews(id) {
 export function updateOnlineUser(id, body) {
   return function (dispatch) {
     return axios
-      .put(`http://localhost:8000/users/${id}`, body)
+      .put(`https://tenshop-api.herokuapp.com/users/${id}`, body)
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -542,7 +582,7 @@ export function vaciarls() {
 export function getOrdersxproduct(idProd) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:8000/orders/ORDD/${idProd}`)
+      .get(`https://tenshop-api.herokuapp.com/orders/ORDD/${idProd}`)
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -557,7 +597,7 @@ export function getproductsxorders(idOrder) {
   console.log(idOrder);
   return function (dispatch) {
     return axios
-      .get(`http://localhost:8000/orders/products/${idOrder}`)
+      .get(`https://tenshop-api.herokuapp.com/orders/products/${idOrder}`)
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -574,7 +614,7 @@ export function getproductsxorders(idOrder) {
 export function getAllReviews() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/products/reviews/allReviews")
+      .get("https://tenshop-api.herokuapp.com/products/reviews/allReviews")
       .then((result) => result.data)
       .then((result) => {
         dispatch({
@@ -588,7 +628,7 @@ export function getAllReviews() {
 export function activeaccount(idUser) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:8000/users/activeaccount/${idUser}`, {
+      .get(`https://tenshop-api.herokuapp.com/users/activeaccount/${idUser}`, {
         withCredentials: true,
       })
       .then((result) => result.data)
@@ -607,7 +647,7 @@ export function sendemailorder(User, body) {
   return function (dispatch) {
     return axios
       .post(
-        `http://localhost:8000/users/sendorder/${first}/${last}/${email}`,
+        `https://tenshop-api.herokuapp.com/users/sendorder/${first}/${last}/${email}`,
         body,
         { withCredentials: true }
       )
@@ -624,7 +664,7 @@ export function deleteProductCart(orderId, productId) {
   return function (dispatch) {
     return axios
       .delete(
-        `http://localhost:8000/orders/orderdelete/${orderId}/${productId}`
+        `https://tenshop-api.herokuapp.com/orders/orderdelete/${orderId}/${productId}`
       )
       .then((result) => result.data)
       .then((data) => {
@@ -637,10 +677,9 @@ export function deleteProductCart(orderId, productId) {
 }
 
 export function getSumaryCart(idUser) {
-  console.log("USUARIOOOOOO", idUser);
   return function (dispatch) {
     return axios
-      .get("http://localhost:8000/users/cart/sumary/" + idUser)
+      .get("https://tenshop-api.herokuapp.com/users/cart/sumary/" + idUser)
       .then((result) => result.data)
       .then((data) => {
         dispatch({
@@ -654,7 +693,7 @@ export function getSumaryCart(idUser) {
 export function sendEmailVisited(body) {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:8000/users/send_email/`, body)
+      .post(`https://tenshop-api.herokuapp.com/users/send_email/`, body)
       .then((result) => result.data)
       .then((data) => {
         dispatch({

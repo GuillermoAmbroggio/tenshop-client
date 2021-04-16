@@ -56,7 +56,7 @@ function Cart({
     console.log("ARRINVITADO", arr, ls.get("idProducts"));
   }
 
-  if (getcart[0]) {
+  if (getcart.length) {
     getcart.forEach((element) => {
       arr.push(element.product_id);
     });

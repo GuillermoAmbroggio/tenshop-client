@@ -3,7 +3,8 @@ const DevelopmentConfig = {
 };
 
 const ProdConfig = {
-  API_URL: "https://tenshop-api.herokuapp.com",
+  //API_URL: "https://tenshop-api.herokuapp.com",
+  API_URL: "http://localhost:8000",
 };
 
 const getConfig = () => {

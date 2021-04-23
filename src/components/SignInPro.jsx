@@ -73,7 +73,6 @@ const SignIn = ({
   };
 
   const responseGoogle = (res) => {
-    console.log(res);
     addUser({
       firstname: res.profileObj.givenName,
       surname: res.profileObj.familyName,
@@ -86,7 +85,6 @@ const SignIn = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
     loginUser(input);
   };
   if (onlineUser == 2) {
@@ -106,13 +104,6 @@ const SignIn = ({
       timer: 1500,
     });
     history.push("/");
-    /*   if(setid.length !== 0){
-              let arr = [];
-              setid.forEach(function(ele){
-                  return arr.push(parseInt(ele))
-                });
-              //console.log("SIGN IN PROOOOOOO", arr)
-    }  */
   }
 
   return (

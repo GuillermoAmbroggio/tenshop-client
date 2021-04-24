@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 var ls = require("local-storage");
 import config from "../config.js";
+import axios from "axios";
 
 function NavBar({
   onlineUser,
@@ -44,6 +45,11 @@ function NavBar({
       }
     }
     if (typeof onlineUser !== "object") {
+      axios
+        .get(`http://localhost:8000/login`, { withCredentials: true })
+        .then((res) => {
+          console.log("NAVBAR 51 oikshjadfjikolsdfhskdjofj", res);
+        });
       loginUserCookie();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
